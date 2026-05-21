@@ -86,30 +86,59 @@ body {
 /* =======================================================================
    3. HERO BANNER (Se ajusta dinámicamente en móvil)
    ======================================================================= */
+/* =======================================================================
+   3. HERO BANNER (Optimizado para mantener proporciones reales)
+   ======================================================================= */
 .hero-banner {
     width: 100%;
-    height: 250px; 
-    /* Cambiamos 's10.jpg' por './s10.jpg' para asegurar la ruta raíz */
-    background: linear-gradient(rgba(0,0,0,0.05), rgba(0,0,0,0.05)), url('./s10.jpg') no-repeat center center;
-    background-size: cover;
+    /* Quitamos el height fijo para que la altura dependa del tamaño real de la imagen */
+    height: auto; 
+    /* Cambiamos 'cover' por 'contain' para que la imagen NUNCA se corte */
+    background: linear-gradient(rgba(0,0,0,0.02), rgba(0,0,0,0.02)), url('./new.jpeg') no-repeat center center;
+    background-size: contain; 
+    background-color: #ffffff; /* Fondo blanco por si la pantalla es más ancha */
     position: relative;
+    
+    /* Truco Pro: Le damos una proporción de aspecto cuadrada/flexible basada en la imagen */
+    aspect-ratio: 16 / 9; 
 }
+
+@media (max-width: 768px) {
+    .hero-banner {
+        /* En celulares, como la imagen original es más cuadrada, cambiamos la proporción para que no queden bordes vacíos */
+        aspect-ratio: 1 / 1; 
+        margin-bottom: 40px;
+    }
+}
+
 .title-container {
     position: absolute;
     bottom: -25px;
     left: 5%;
     right: 5%;
     background-color: #ffffff;
-    padding: 15px;
+    padding: 12px;
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-bottom: 3px solid #001355; /* Detalle elegante en la base */
 }
 .title-container h1 {
     margin: 0;
     color: #001355;
-    font-size: 22px;
+    font-size: 20px;
     text-transform: uppercase;
     font-weight: bold;
+    letter-spacing: 1px;
+}
+
+@media (min-width: 850px) {
+    .hero-banner {
+        /* Ajuste de proporción ideal para pantallas de computadora */
+        aspect-ratio: 21 / 9; 
+    }
+    .title-container h1 {
+        font-size: 28px;
+    }
 }
 
 /* =======================================================================
