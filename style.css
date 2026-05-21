@@ -91,15 +91,12 @@ body {
    ======================================================================= */
 .hero-banner {
     width: 100%;
-    /* Quitamos el height fijo para que la altura dependa del tamaño real de la imagen */
     height: auto; 
-    /* Cambiamos 'cover' por 'contain' para que la imagen NUNCA se corte */
+    /* Asegúrate de que diga './new.jpeg' y NO 's10.jpg' */
     background: linear-gradient(rgba(0,0,0,0.02), rgba(0,0,0,0.02)), url('./new.jpeg') no-repeat center center;
     background-size: contain; 
-    background-color: #ffffff; /* Fondo blanco por si la pantalla es más ancha */
+    background-color: #ffffff; 
     position: relative;
-    
-    /* Truco Pro: Le damos una proporción de aspecto cuadrada/flexible basada en la imagen */
     aspect-ratio: 16 / 9; 
 }
 
@@ -249,7 +246,7 @@ body {
     line-height: 1.4;
 }
 
-/* Simulador Facebook Responsivo */
+//* --- Simulador Facebook Modificado --- */
 .fb-widget-mock {
     border: 1px solid #e0e0e0;
     padding: 12px;
@@ -257,17 +254,70 @@ body {
     width: 100%;
     box-sizing: border-box;
 }
+
+/* Cuerpo del widget: Aquí cargamos la imagen en vez del color azul */
+.fb-body-img {
+    height: 140px;
+    /* Cambiamos el gradiente por tu imagen de banner o la que prefieras de fondo */
+    background: linear-gradient(rgba(0, 19, 85, 0.75), rgba(0, 19, 85, 0.75)), url('./new.jpeg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+/* Capa interna para ordenar el logo y el texto alineados */
+.fb-overlay-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Estilo para el logo circular o icono que va dentro del recuadro */
+.fb-inner-logo {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%; /* Lo hace redondo estilo perfil de Facebook */
+    border: 2px solid white;
+    background-color: white;
+}
+
+.fb-overlay-content span {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1.3;
+}
+
+.fb-overlay-content small {
+    font-size: 10px;
+    font-weight: normal;
+    opacity: 0.9;
+}
 .fb-header {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
 }
+/* Foto de perfil redondita al lado del nombre */
 .fb-avatar {
     width: 35px;
     height: 35px;
-    background-color: #001355;
-    border-radius: 50%;
+    /* Cambiamos el color azul liso por tu logo real */
+    background: url('./logoUnan-Managua-1.png') no-repeat center center;
+    background-size: cover; /* Hace que el logo se ajuste perfecto al círculo */
+    background-color: white; /* Fondo blanco por si el logo tiene transparencias */
+    border-radius: 50%; /* Lo mantiene perfectamente redondo */
     margin-right: 10px;
+    border: 1px solid #e0e0e0; /* Un pequeño borde gris para que resalte */
+    flex-shrink: 0; /* Evita que el círculo se aplaste en pantallas chicas */
 }
 .fb-profile-info strong {
     display: block;
